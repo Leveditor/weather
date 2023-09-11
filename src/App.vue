@@ -1,6 +1,7 @@
 <template>
   <div>
     <Weather />
+    <Footer />
   </div>
 </template>
 
@@ -15,11 +16,13 @@
 <script>
 import './assets/tailwind.css';
 import Weather from './components/Weather.vue';
+import Footer from './components/Footer.vue';
 
 export default {
     name: 'App',
     components: {
-      Weather
+      Weather,
+      Footer
     }
 }
 </script>
