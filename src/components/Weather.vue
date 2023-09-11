@@ -1,9 +1,14 @@
 <template>
   <div class="mt-12 mb-8 max-w-6xl mx-auto px-2">
-    <div class="bg-black mb-4 md:w-96 text-white font-bold rounded w-full">
-      <h1 class="uppercase p-2">Previsão do tempo | hoje</h1>
+    <div class="flex flex-wrap justify-between font-bold text-white">
+      <div class="bg-black mb-4 md:w-96 w-full rounded">
+        <h1 class="uppercase p-2">Weather forecast | today</h1>
+      </div>
+      <div>
+        <button class="bg-blue-600 px-5 rounded py-1" @click="changeTemp">Change to °F</button>
+      </div>
     </div>
-      
+  
     <!-- cards -->
     <div class="flex md:justify-normal justify-center flex-wrap text-center">
       <div v-for="(temp, index) in weather" :key="index" class="mr-4 mt-4">
@@ -12,11 +17,12 @@
         </div>
 
         <div class="bg-gray-300 flex justify-center ">
-          <img :src="temp.icon" class="w-32" />
+          <img :src="temp.icon"  />
         </div>
 
         <div class="w-60 flex text-xl overflow-x-hidden text-white text-center uppercase border-b">
-          <p class="bg-black w-2/4 p-2 border-r">{{ temp.temp }} ℃</p>
+          <p v-if="weatherF" class="bg-black w-2/4 p-2 border-r">{{ Math.round(temp.temp) }} ℃</p>
+          <p v-else class="bg-black w-2/4 p-2 border-r">{{ Math.round(temp.temp_f) }} °F</p>
           <p class="bg-black w-2/4 p-2">{{ temp.wind }}  km/h</p>
         </div>
 
@@ -30,11 +36,12 @@
 <script>
 import axios from 'axios';
 export default {
-    name: 'testeL',
+    name: 'weatherForecast',
 
   data() {
       return {
           weather: null,
+          weatherF: true
       }
   },
 
@@ -80,6 +87,7 @@ export default {
             weatherData.push({
               city: city.name,
               temp: data.current.temp_c,
+              temp_f: data.current.temp_f,
               wind: data.current.wind_kph,
               humidity: data.current.humidity,
               icon: data.current.condition.icon,
@@ -93,6 +101,10 @@ export default {
         console.error(error);
       }
     },
+
+    changeTemp() {
+      this.weatherF = !this.weatherF;
+    }
   }
 }
 
