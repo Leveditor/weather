@@ -1,6 +1,6 @@
 <template>
     <div>
-        <footer className="bg-gray-900 flex justify-center p-3 mt-20">
+        <footer className="bg-gray-900 flex justify-center p-3 mt-72">
             <a href="https://github.com/Leveditor/weather" target="_blank" rel="noreferrer">
                 <i className="devicon-github-original text-emerald-50 hover:text-purple-950 pr-3 text-5xl"></i>
             </a>
@@ -12,7 +12,7 @@
 </template>
 <script>
 export default {
-  name: 'FooterName'
+  name: 'FooterWeather'
 }
 
 </script>

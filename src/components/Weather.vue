@@ -4,6 +4,7 @@
       <div class="bg-black mb-4 md:w-96 w-full rounded">
         <h1 class="uppercase p-2">Weather forecast | today</h1>
       </div>
+      <!-- Button to change to °F or °C-->
       <div>
         <button class="bg-blue-600 px-5 rounded py-1" @click="changeTemp">{{ weatherF ? 'Change to °F' : 'Change to °C' }}</button>
       </div>
